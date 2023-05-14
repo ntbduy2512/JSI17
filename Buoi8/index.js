@@ -1,5 +1,6 @@
-import Register from "./register";
-import Login from "./login";
+import Register from "./register.js";
+import Login from "./login.js";
+
 class App{
     activeScreen
     container

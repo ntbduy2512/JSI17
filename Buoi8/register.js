@@ -63,7 +63,39 @@ class Register{
         container.appendChild(this.$containerDiv)
     }
 
+    
+
     handleSubmit = (e) => {
+        e.preventDefault();
+        const email = this.$emailInputEmail.value;
+        const password = this.$passInputPass.value;
+        const confirmPass = this.$confirmPassInputPass.value;
+        const userName = this.$nameInputTxt.value;
+
+        if(email == ""){
+            prompt("no email")
+            return
+        }
+
+        if(password.length <6){
+            prompt("password not long enough")
+            return
+        }
+
+        if(userName == ""){
+            prompt("no name")
+            return
+        }
+
+        if(confirmPass == ""){
+            prompt("confirm your password")
+            return
+        }
+
+        if(password != confirmPass){
+            prompt("passwords dont match")
+            return
+        }
 
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
@@ -82,8 +114,9 @@ class Register{
     gotoSignin = () => {
         const login = new Login();
         // change active section
+        app.changeActiveScreen(login);
     };
 }
 
 
-export default Register
+export default Register;

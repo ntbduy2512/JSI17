@@ -1,4 +1,5 @@
-import Register from "./register"
+import Register from "./register.js"
+import { getAuth, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js"'
 class Login {
     $containerDiv
     $titleHeader
@@ -47,11 +48,37 @@ class Login {
         container.appendChild(this.$containerDiv)
     }
 
-    handleSubmit = (e) => {};
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const email = this.$emailInputEmail.value;
+        const password = this.$passInputPass.value;
+        if(email == ""){
+            prompt("no email")
+            return
+        }
+
+        if(password.length <6){
+            prompt("password not long enough")
+            return
+        }
+
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+    };
 
     gotoSignin = () => {
-        const login = new Register();
+        const signup = new Register();
         // change active section
+        changeActiveScreen(signup)
     };
 }
 
