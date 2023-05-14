@@ -73,27 +73,27 @@ class Register{
         const userName = this.$nameInputTxt.value;
 
         if(email == ""){
-            prompt("no email")
+            alert("no email")
             return
         }
 
         if(password.length <6){
-            prompt("password not long enough")
+            alert("password not long enough")
             return
         }
 
         if(userName == ""){
-            prompt("no name")
+            alert("no name")
             return
         }
 
         if(confirmPass == ""){
-            prompt("confirm your password")
+            alert("confirm your password")
             return
         }
 
         if(password != confirmPass){
-            prompt("passwords dont match")
+            alert("passwords dont match")
             return
         }
 

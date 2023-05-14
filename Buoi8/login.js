@@ -53,12 +53,12 @@ class Login {
         const email = this.$emailInputEmail.value;
         const password = this.$passInputPass.value;
         if(email == ""){
-            prompt("no email")
+            alert("no email")
             return
         }
 
         if(password.length <6){
-            prompt("password not long enough")
+            alert("password not long enough")
             return
         }
 
