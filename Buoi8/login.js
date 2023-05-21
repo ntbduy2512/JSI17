@@ -1,5 +1,6 @@
-import Register from "./register.js"
-import { getAuth, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js"'
+import app from "./index.js";
+import Register from "./register.js";
+import { getAuth, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js';
 class Login {
     $containerDiv
     $titleHeader
@@ -15,14 +16,14 @@ class Login {
         this.$emailInputEmail.type = "email";
         this.$emailInputEmail.placeholder = "Enter your email";
 
-        this.$passInputTxt = document.createElement("input");
-        this.$passInputTxt.type = "password";
-        this.$passInputTxt.placeholder = "Enter your password";
+        this.$passInputPass = document.createElement("input");
+        this.$passInputPass.type = "password";
+        this.$passInputPass.placeholder = "Enter your password";
 
-        this.$subimtBtn = document.createElement("button");
-        this.$subimtBtn.type = "submit";
-        this.$subimtBtn.innerHTML = "Register";
-        this.$subimtBtn.addEventListener("click", this.handleSubmit);
+        this.$submitBtn = document.createElement("button");
+        this.$submitBtn.type = "submit";
+        this.$submitBtn.innerHTML = "Login";
+        this.$submitBtn.addEventListener("click", this.handleSubmit);
 
         this.$gotoSignupLink = document.createElement("a");
         this.$gotoSignupLink.innerHTML = "Don't have an account? Sign up";
@@ -33,19 +34,22 @@ class Login {
 
         this.$titleHeader = document.createElement("h2");
         this.$titleHeader.innerHTML = "Sign in to your account";
+
+        this.$signinForm = document.createElement("form");
+
     }
 
     initRender = (container) => {
         
-        this.$signupForm.appendChild(this.$emailInputEmail);
-        this.$signupForm.appendChild(this.$passInputPass);
-        this.$signupForm.appendChild(this.$subimtBtn);
+        this.$signinForm.appendChild(this.$emailInputEmail);
+        this.$signinForm.appendChild(this.$passInputPass);
+        this.$signinForm.appendChild(this.$submitBtn);
 
-        this.$signupForm.appendChild(this.$titleHeader);
-        this.$signupForm.appendChild(this.$signinForm);
-        this.$signupForm.appendChild(this.$gotoSigninLink);
+        this.$containerDiv.appendChild(this.$titleHeader);
+        this.$containerDiv.appendChild(this.$signinForm);
+        this.$containerDiv.appendChild(this.$gotoSignupLink);
 
-        container.appendChild(this.$containerDiv)
+        container.appendChild(this.$containerDiv);
     }
 
     handleSubmit = (e) => {
@@ -75,10 +79,10 @@ class Login {
           });
     };
 
-    gotoSignin = () => {
+    gotoSignup = () => {
         const signup = new Register();
         // change active section
-        changeActiveScreen(signup)
+        app.changeActiveScreen(signup)
     };
 }
 

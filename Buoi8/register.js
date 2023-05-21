@@ -1,5 +1,7 @@
-import Login from './login';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import Login from './login.js';
+import app from './index.js';
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+
 
 
 class Register{
@@ -22,9 +24,9 @@ class Register{
         this.$nameInputTxt.type = "text";
         this.$nameInputTxt.placeholder = "Enter your name";
 
-        this.$passInputTxt = document.createElement("input");
-        this.$passInputTxt.type = "password";
-        this.$passInputTxt.placeholder = "Enter your password";
+        this.$passInputPass = document.createElement("input");
+        this.$passInputPass.type = "password";
+        this.$passInputPass.placeholder = "Enter your password";
 
         this.$confirmPassInputPass = document.createElement("input");
         this.$confirmPassInputPass.type = "password";
@@ -46,6 +48,8 @@ class Register{
         this.$titleHeader.innerHTML = "Create your account";
 
         this.$signupForm = document.createElement("form");
+        this.$signupForm.classList.add("centering", "flex-column",)
+
 
     }
     initRender = (container) => {
@@ -56,9 +60,9 @@ class Register{
         this.$signupForm.appendChild(this.$confirmPassInputPass);
         this.$signupForm.appendChild(this.$subimtBtn);
 
-        this.$signupForm.appendChild(this.$titleHeader);
-        this.$signupForm.appendChild(this.$signupForm);
-        this.$signupForm.appendChild(this.$gotoSigninLink);
+        this.$containerDiv.appendChild(this.$titleHeader);
+        this.$containerDiv.appendChild(this.$signupForm);
+        this.$containerDiv.appendChild(this.$gotoSigninLink);
 
         container.appendChild(this.$containerDiv)
     }

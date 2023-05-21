@@ -1,4 +1,3 @@
-import Register from "./register.js";
 import Login from "./login.js";
 
 class App{
@@ -24,7 +23,7 @@ const container = document.getElementById("app");
 
 const login = new Login();
 
-const app = new App ();
+const app = new App (container);
 app.changeActiveScreen(login);
 
-export default App;
+export default app;
